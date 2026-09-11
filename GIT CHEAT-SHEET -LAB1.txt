@@ -1,0 +1,66 @@
+ GIT CHEAT-SHEET ----------------------------------------------------------------
+
+Configuration initiale
+  git config --global user.name "Nom"
+  git config --global user.email "email"
+      -> configure l'identité utilisée dans les commits
+
+Créer / récupérer un projet
+  git init
+      -> initialise un nouveau repository local
+  git clone <url>
+      -> copie un repository distant en local
+  git remote add origin <url>
+      -> relie un repository local existant à un dépôt distant
+  git remote -v
+      -> liste les dépôts distants configurés
+
+Suivi des changements
+  git status
+      -> affiche l'état des fichiers (modifiés, non suivis, etc.)
+  git add <fichier>        (ou git add . pour tout)
+      -> ajoute les changements à la zone de staging
+  git commit -m "message"
+      -> enregistre un instantané des changements stagés
+  git diff
+      -> affiche les différences non encore stagées
+  git log
+  git log --oneline --graph --all
+      -> affiche l'historique des commits (version condensée/graphique)
+
+Synchronisation avec le dépôt distant
+  git push origin <branche>
+      -> envoie les commits locaux vers le dépôt distant
+  git pull origin <branche>
+      -> récupère et fusionne les changements distants
+  git fetch
+      -> récupère les changements distants sans les fusionner
+
+Branches
+  git branch
+      -> liste les branches locales
+  git branch <nom>
+      -> crée une nouvelle branche
+  git checkout <nom>        (ou git switch <nom>)
+      -> change de branche active
+  git checkout -b <nom>
+      -> crée une branche et bascule dessus en une seule commande
+  git merge <branche>
+      -> fusionne une branche dans la branche active
+
+Annuler / revenir en arrière
+  git reset --soft <commit>
+      -> revient à un commit, garde les changements en staging
+  git reset --hard <commit>
+      -> revient à un commit, supprime les changements non commités
+      -> ATTENTION : perte de données si non sauvegardé ailleurs
+  git revert <commit>
+      -> crée un nouveau commit qui annule un commit déjà poussé
+      -> plus sûr que reset quand l'historique est déjà partagé
+
+Collaboration
+  git clone -b <branche> <url>
+      -> clone directement une branche spécifique
+  git pull --rebase
+      -> réapplique les commits locaux par-dessus les changements
+         distants au lieu de créer un commit de merge
